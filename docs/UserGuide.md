@@ -1,5 +1,8 @@
 # MoneyGoWhere
+
+<br>
 <p align="center"><img alt="icon" src="https://raw.githubusercontent.com/penguin-s/tp/branch-User-Guide/docs/images/icon.png"></p>
+<br>
 
 ## Contents
 * [Introduction](#introduction)
@@ -18,6 +21,7 @@
 * [Command Summary](#command-summary)
 
 <br>
+<br>
 
 ## Introduction
 
@@ -27,6 +31,9 @@ Based on a Command Line Interface (CLI), you can add your `expenses`, `income` s
 
 Although this application is mainly targeted at computing professionals who are familiar with CLI, **you don't have to worry if you're not an expert** -- MoneyGoWhere is **easy to pick up** and can help you start organising your finances in a matter of **moments**.
 
+<br>
+<br>
+
 ## Quick Start
 
 1. Ensure that ```Java 11``` is installed on your system.
@@ -35,10 +42,13 @@ Although this application is mainly targeted at computing professionals who are 
 2. Ensure that you have write permissions for the directory in which you are executing the program.
 
 <br>
+<br>
 
 ## Understanding the Command Syntax
 
+
 ### Sub-Contents
+
 * [Basic Syntax](#basic-syntax)
 * [Additional Syntax](#additional-syntax)
   * [Adding Spaces](#adding-spaces)
@@ -46,13 +56,19 @@ Although this application is mainly targeted at computing professionals who are 
   * [Restriction on Adding Hyphens](#restriction-on-adding-hyphens)
 * [Back to Contents](#contents)
 
+<br>
 <hr>
+<br>
 
 ### Basic Syntax
+
+<br>
 
 When inputting arguments:
 * The absence of square brackets denotes **mandatory** arguments.
 * Square brackets denote **optional** arguments.
+
+<br>
 
 Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
 
@@ -66,16 +82,22 @@ Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATE
 >* `Add-Expense -n Subscription -a 13.37`
 >* `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359"`
 
+<br>
 <hr>
+<br>
 
 ### Additional Syntax
+
+<br>
 
 #### Adding Spaces
 Argument values with spaces should be enclosed with double quotes.
 
 Example: `Add-Expense -n "Birthday items" -a 90.40`
 
+<br>
 <hr>
+<br>
 
 #### Adding Double Quotes
 
@@ -83,7 +105,9 @@ Argument values with a double quote can be escaped by prepending an additional d
 
 Example: `Add-Expense -n """Stuff" -a 65.77` 
 
+<br>
 <hr>
+<br>
 
 #### Restriction on Adding Hyphens
 
@@ -91,6 +115,7 @@ Argument values cannot start with a hyphen.
 
 Example: `Add-Expense -n "-Phone Bill" -a -500.00`
 
+<br>
 <br>
 
 ## Features
@@ -134,6 +159,7 @@ Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DE
 ```
 
 <br>
+<br>
 
 ## Managing your expenses
 
@@ -146,8 +172,18 @@ Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DE
 * [Converting the currency of an expense](#converting-the-currency-of-an-expense-convert-currency): `Convert-Currency`
 * [Back to Contents](#contents)
 
+<br>
+<hr>
+<br>
+
+
 ### Adding an expense: `Add-Expense`
+
+<br>
+
 Adds a new expense to the list of expenses.
+
+<br>
 
 Syntax: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
 
@@ -157,6 +193,7 @@ Syntax: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEG
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
+<br>
 
 Examples of usage:
 ```
@@ -184,16 +221,23 @@ Mode of Payment : PayLah
 
 The expense was added successfully.
 ```
+
+<br>
 <hr>
+<br>
 
 ### Viewing expense(s): `View-Expense`
 Displays past expenses you have added.
+
+<br>
 
 Syntax: `View-Expense [-e EXPENSE_NUMBER]`
 
 > ⚠️️️️ Syntax Notes
 > * `EXPENSE_NUMBER` is an integer value. This value should be equal to or greater than 0.
 > * If this argument is provided, MoneyGoWhere will only display the specified expense.
+
+<br>
 
 Examples of usage:
 ```
@@ -228,16 +272,21 @@ Remarks         : Remarks here
 Currency        : USD
 Mode of Payment : PayLah
 ```
-
+<br>
 <hr>
+<br>
 
 ### Deleting an expense: `Delete-Expense`
 Deletes an expense from the list of expenses.
+
+<br>
 
 Syntax: `Delete-Expense -e EXPENSE_NUMBER`
 
 > ⚠️️️️ Syntax Notes
 > * `EXPENSE_NUMBER` is an integer value. This value should be equal to or greater than 0.
+
+<br>
 
 Example of usage:
 ```
@@ -246,10 +295,14 @@ Delete-Expense -e 1
 The expense was deleted successfully.
 ```
 
+<br>
 <hr>
+<br>
 
 ### Editing an expense: `Edit-Expense`
 Edits an existing expense in the list of expenses.
+
+<br>
 
 Syntax: `Edit-Expense -e EXPENSE_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
 
@@ -259,6 +312,8 @@ Syntax: `Edit-Expense -e EXPENSE_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t
 > * `CURRENCY` is a text string. It must be a valid currency code.
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
+
+<br>
 
 Examples of usage:
 ```
@@ -290,21 +345,27 @@ Mode of Payment : PayLah
 The expense was edited successfully.
 ```
 
+<br>
 <hr>
+<br>
 
 ### Sorting expenses: `Sort-Expense`
 Sorts the list of expenses according to an alphabetical, amount, date or currency order. It can be sorted in both ascending and
 descending order. 
 
-Note:
-1. By default, expenses are sorted in alphabetical order, from A to Z. Expenses are sorted **automatically** whenever a new expense is added, or if an existing expense is edited. 
-2. The nature of this feature could cause the indexes of the expenses to change while running MoneyGoWhere. Please use `View-Expense` to get the most updated indexes of the expenses.
+> ℹ️ Tips
+> 1. By default, expenses are sorted in alphabetical order, from A to Z. Expenses are sorted **automatically** whenever a new expense is added, or if an existing expense is edited. 
+> 2. The nature of this feature could cause the indexes of the expenses to change while running MoneyGoWhere. Please use `View-Expense` to get the most updated indexes of the expenses.
+
+<br>
 
 Syntax: `Sort-Expense -t TYPE -o ORDER`
 
 > ⚠️️️️ Syntax Notes
 > * `TYPE` is a text string. It can be either `alphabetical`, `amount`, `date` or `currency`.
 > * `ORDER` is a text string. It can be either `ascending` or `descending`.
+
+<br>
 
 Examples of usage:
 
@@ -332,11 +393,14 @@ Sort-Expense -t currency -o descending
 
 Your expenses have been sorted successfully.
 ```
-
+<br>
 <hr>
+<br>
 
 ### Converting the currency of an expense: `Convert-Currency`
 Converts the currency of an expense from the list of expenses.
+
+<br>
 
 Syntax: `Convert-Currency -e EXPENSE_NUMBER -x CURRENCY [-r RATE]`
 
@@ -344,6 +408,8 @@ Syntax: `Convert-Currency -e EXPENSE_NUMBER -x CURRENCY [-r RATE]`
 > * `EXPENSE_NUMBER` is an integer value. This value should be equal to or greater than 0.
 > * `CURRENCY` is a text string. It must be a valid currency code.
 > * `RATE` is a decimal value. This value should be greater than 0. This rate should be the rate to convert the expense amount from the old currency to the new currency.
+
+<br>
 
 Example of usage:
 ```
@@ -361,6 +427,7 @@ The expense's currency was changed successfully.
 
 ```
 
+<br>
 <br>
 
 ## Managing your recurring payments
