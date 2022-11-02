@@ -19,7 +19,12 @@
 
 ## Introduction
 
-MoneyGoWhere is a financial planner to help you manage your finances.
+MoneyGoWhere is a financial planning application to help you manage your finances.
+
+Based on a Command Line Interface (CLI), you can add your `expenses`, `income` sources, spending `targets` and `recurring payments` to a trackable list that can be saved and accessed **anywhere, anytime**.
+
+Although this application is mainly targeted at computing professionals who are familiar with CLI, **you don't have to worry if you're not an expert** -- MoneyGoWhere is **easy to pick up** and can help you start organising your finances in a matter of **moments**.
+
 
 ## Quick Start
 
@@ -30,23 +35,70 @@ MoneyGoWhere is a financial planner to help you manage your finances.
 
 ## Understanding the Command Syntax
 
-* Arguments given without square brackets denote **mandatory** arguments.
-* Arguments given with square brackets denote **optional** arguments.
-* Argument values with spaces should be enclosed with double quotes.
-* Argument values with a double quote can be escaped by prepending an additional double quote.
-* Argument values cannot start with a hyphen.
+### Sub-Contents
+* [Basic Syntax](#basic-syntax)
+* [Additional Syntax](#additional-syntax)
+  * [Adding Spaces](#adding-spaces)
+  * [Adding Double Quotes](#adding-double-quotes)
+  * [Restriction on Adding Hyphens](#restriction-on-adding-hyphens)
+* [Back to Contents](#contents)
 
-### Example: `Add-Expense`
+<hr>
 
-Syntax: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
+### Basic Syntax
 
-Examples of valid command syntax:
-* `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah`
-* `Add-Expense -n Subscription -a 13.37`
+When inputting arguments:
+* The absence of square brackets denotes **mandatory** arguments.
+* Square brackets denote **optional** arguments.
 
-Examples of invalid command syntax:
-* `Add-Expense -n Subscription`
-* `Add-Expense -a 13.37`
+Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
+
+> ❌ Invalid Command Syntax  
+>
+>* `Add-Expense -n Subscription`    
+>* `Add-Expense -a 13.37`
+
+>✔️ Valid Command Syntax
+>
+>* `Add-Expense -n Subscription -a 13.37`
+>* `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359"`
+
+![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
+
+![ff0000](https://placehold.it/150/ffffff/ff0000?text=hello) `#ff0000`
+
+> __Note__
+> This is a note
+
+> __Warning__
+> This is a warning
+
+<hr>
+
+### Additional Syntax
+
+#### Adding Spaces
+Argument values with spaces should be enclosed with double quotes.
+
+Example: `Add-Expense -n "Birthday items" -a 90.40`
+
+<hr>
+
+#### Adding Double Quotes
+
+Argument values with a double quote can be escaped by prepending an additional double quote.
+
+Example: `Add-Expense -n """Stuff" -a 65.77` 
+
+<hr>
+
+#### Restriction on Adding Hyphens
+
+Argument values cannot start with a hyphen.
+
+Example: `Add-Expense -n "-Phone Bill" -a -500.00`
+
+
 
 ## Features
 
@@ -89,6 +141,16 @@ Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DE
 ```
 
 ## Managing your expenses
+
+### Sub-Contents
+* [Adding an expense](#adding-an-expense-add-expense): `Add-Expense`
+* [Viewing expense(s)](#viewing-expenses-view-expense): `View-Expense`
+* [Deleting an expense](#deleting-an-expense-delete-expense): `Delete-Expense`
+* [Editing an expense](#editing-an-expense-edit-expense): `Edit-Expense`
+* [Sorting expenses](#sorting-expenses-sort-expense)" `Sort-Expense`
+* [Converting the currency of an expense](#converting-the-currency-of-an-expense-convert-currency): `Convert-Currency`
+* [Back to Contents](#contents)
+
 ### Adding an expense: `Add-Expense`
 Adds a new expense to the list of expenses.
 
@@ -175,7 +237,7 @@ Example of usage:
 
 <hr>
 
-### Converting currency of an expense: `Convert-Currency`
+### Converting the currency of an expense: `Convert-Currency`
 Converts the currency of an expense from the list of expenses.
 
 Syntax: `Convert-Currency -e EXPENSE_NUMBER -x CURRENCY [-r RATE]`
