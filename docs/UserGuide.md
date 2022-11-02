@@ -63,16 +63,6 @@ Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATE
 >* `Add-Expense -n Subscription -a 13.37`
 >* `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359"`
 
-![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
-
-![ff0000](https://placehold.it/150/ffffff/ff0000?text=hello) `#ff0000`
-
-> __Note__
-> This is a note
-
-> __Warning__
-> This is a warning
-
 <hr>
 
 ### Additional Syntax
@@ -163,10 +153,32 @@ Syntax: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEG
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
 
-Examples of usage: 
-* `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah`
-* `Add-Expense -n Subscription -a 13.37`
+Examples of usage:
+```
+Add-Expense -n Subscription -a 13.37
 
+Name            : Subscription
+Date and Time   : 02 Nov 2022 14:21
+Amount          : 13.37
+Currency        : SGD
+
+
+The expense was added successfully.
+```
+```
+Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah
+
+Name            : Cloud subscription
+Date and Time   : 01 Jan 2022 23:59
+Description     : Monthly payment
+Amount          : 13.37
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : USD
+Mode of Payment : PayLah
+
+The expense was added successfully.
+```
 <hr>
 
 ### Viewing expense(s): `View-Expense`
@@ -179,8 +191,38 @@ Syntax: `View-Expense [-e EXPENSE_NUMBER]`
 > * If this argument is provided, MoneyGoWhere will only display the specified expense.
 
 Examples of usage:
-* `View-Expense`
-* `View-Expense -e 1`
+```
+View-Expense
+
+---- EXPENSE INDEX 0 ----
+Name            : Subscription
+Date and Time   : 02 Nov 2022 14:21
+Amount          : 13.37
+Currency        : SGD
+
+---- EXPENSE INDEX 1 ----
+Name            : Cloud subscription
+Date and Time   : 01 Jan 2022 23:59
+Description     : Monthly payment
+Amount          : 13.37
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : USD
+Mode of Payment : PayLah
+```
+```
+View-Expense -e 1
+
+---- EXPENSE INDEX 1 ----
+Name            : Cloud subscription
+Date and Time   : 01 Jan 2022 23:59
+Description     : Monthly payment
+Amount          : 13.37
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : USD
+Mode of Payment : PayLah
+```
 
 <hr>
 
@@ -193,7 +235,11 @@ Syntax: `Delete-Expense -e EXPENSE_NUMBER`
 > * `EXPENSE_NUMBER` is an integer value. This value should be equal to or greater than 0.
 
 Example of usage:
-* `Delete-Expense -e 1`
+```
+Delete-Expense -e 1
+
+The expense was deleted successfully.
+```
 
 <hr>
 
@@ -210,8 +256,34 @@ Syntax: `Edit-Expense -e EXPENSE_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
 Examples of usage:
-* `Edit-Expense -e 1 -n Subscription -a 13.37`
-* `Edit-Expense -e 1 -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah`
+```
+Edit-Expense -e 1 -n Broom -a 42.20
+
+---- EXPENSE INDEX 1 ----
+Name            : Broom
+Date and Time   : 01 Jan 2022 23:59
+Description     : Monthly payment
+Amount          : 42.20
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : USD
+Mode of Payment : PayLah
+```
+```
+Edit-Expense -e 1 -n "VPN subscription" -a 88.88 -d "08/08/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah
+
+---- EXPENSE INDEX 1 ----
+Name            : VPN subscription
+Date and Time   : 08 Aug 2022 23:59
+Description     : Monthly payment
+Amount          : 88.88
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : USD
+Mode of Payment : PayLah
+
+The expense was edited successfully.
+```
 
 <hr>
 
@@ -230,10 +302,31 @@ Syntax: `Sort-Expense -t TYPE -o ORDER`
 > * `ORDER` is a text string. It can be either `ascending` or `descending`.
 
 Examples of usage:
-* `Sort-Expense -t date -o ascending`
-* `Sort-Expense -t amount -o descending`
-* `Sort-Expense -t alphabetical -o ascending`
-* `Sort-Expense -t currency -o descending`
+
+#### Sorting by date in ascending order
+```
+Sort-Expense -t date -o ascending
+
+Your expenses have been sorted successfully.
+```
+#### Sorting by amount in descending order
+```
+Sort-Expense -t amount -o descending
+
+Your expenses have been sorted successfully.
+```
+#### Sorting alphabetically in ascending order
+```
+Sort-Expense -t alphabetical -o ascending
+
+Your expenses have been sorted successfully.
+```
+#### Sorting by currency (alphabetically) in descending order
+```
+Sort-Expense -t currency -o descending
+
+Your expenses have been sorted successfully.
+```
 
 <hr>
 
@@ -337,8 +430,25 @@ Syntax: `Add-Income -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION]`
 
 
 Examples of usage:
-* `Add-Income -n "Stocks" -a 500.00 -d "01/02/2022 2359" -t "Investment payouts"`
-* `Add-Income -n "Salary" -a 3000.00`
+```
+Add-Income -n "Salary" -a 3000.00
+
+Name          : Salary
+Date and Time : 02 Nov 2022 14:19
+Amount        : 3000.00
+
+The income was added successfully.
+```
+```
+Add-Income -n "Stocks" -a 500.00 -d "01/02/2022 2359" -t "Investment payouts"
+        
+Name          : Stocks
+Date and Time : 01 Feb 2022 23:59
+Description   : Investment payouts
+Amount        : 500.00
+
+The income was added successfully.
+```
 
 <hr>
 
@@ -382,7 +492,10 @@ Syntax: `Edit-Income -e INCOME_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t D
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
 Examples of usage:
-* `Edit-Income -e 1 -n Payout -a 100.00`
+```Edit-Income -e 1 -n Payout -a 100.00
+
+
+```
 * `Edit-Income -e 1 -n "Monthly Salary" -a 3000 -d "01/01/2022 2359" -t "Monthly payment"`
 
 <hr>
