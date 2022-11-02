@@ -17,6 +17,8 @@
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
+<br>
+
 ## Introduction
 
 MoneyGoWhere is a financial planning application to help you manage your finances.
@@ -25,13 +27,14 @@ Based on a Command Line Interface (CLI), you can add your `expenses`, `income` s
 
 Although this application is mainly targeted at computing professionals who are familiar with CLI, **you don't have to worry if you're not an expert** -- MoneyGoWhere is **easy to pick up** and can help you start organising your finances in a matter of **moments**.
 
-
 ## Quick Start
 
 1. Ensure that ```Java 11``` is installed on your system.
     1. Execute the command ```java --version``` in your terminal window.
     2. Verify that the version of Java installed is ```Java 11```.
 2. Ensure that you have write permissions for the directory in which you are executing the program.
+
+<br>
 
 ## Understanding the Command Syntax
 
@@ -88,7 +91,7 @@ Argument values cannot start with a hyphen.
 
 Example: `Add-Expense -n "-Phone Bill" -a -500.00`
 
-
+<br>
 
 ## Features
 
@@ -129,6 +132,8 @@ View your targets: View-Target [-e TARGET-INDEX]
 Delete a target: Delete-Target -e TARGET-INDEX
 Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] [-a AMOUNT] [-c CURRENT-AMOUNT]
 ```
+
+<br>
 
 ## Managing your expenses
 
@@ -341,7 +346,22 @@ Syntax: `Convert-Currency -e EXPENSE_NUMBER -x CURRENCY [-r RATE]`
 > * `RATE` is a decimal value. This value should be greater than 0. This rate should be the rate to convert the expense amount from the old currency to the new currency.
 
 Example of usage:
-* `Convert-Currency -e 1 -x USD -r 1.35`
+```
+Convert-Currency -e 1 -x MYR -r 1.35
+
+Name            : VPN subscription
+Date and Time   : 08 Aug 2022 23:59
+Description     : Monthly payment
+Amount          : 161.983800
+Category        : Work expenses
+Remarks         : Remarks here
+Currency        : MYR
+Mode of Payment : PayLah
+The expense's currency was changed successfully.
+
+```
+
+<br>
 
 ## Managing your recurring payments
 ### Adding recurring payments: `Add-RecurringPayment`
