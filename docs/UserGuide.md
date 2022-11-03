@@ -970,6 +970,10 @@ The target was edited successfully.
 ```
 
 <br>
+
+[Back to Sub-Contents](#managing-your-targets)
+
+<br>
 <hr>
 <br>
 
@@ -1080,11 +1084,11 @@ A list of all valid commands.
 <br>
 
 ### Miscellaneous
-| Command      | Syntax                      |
-|--------------|-----------------------------|
-| Merge file   | `Merge-File -p PATH_STRING` |
-| Command list | `help`                      |
-| Exit         | `bye`                       |
+| Command           | Syntax                      |
+|-------------------|-----------------------------|
+| Merge file        | `Merge-File -p PATH_STRING` |
+| View command list | `help`                      |
+| Exit              | `bye`                       |
 
 <br>
 <br>
