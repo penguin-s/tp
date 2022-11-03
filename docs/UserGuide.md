@@ -62,8 +62,6 @@ Although this application is mainly targeted at computing professionals who are 
 
 ### Basic Syntax
 
-<br>
-
 When inputting arguments:
 * The absence of square brackets denotes **mandatory** arguments.
 * Square brackets denote **optional** arguments.
@@ -93,7 +91,15 @@ Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATE
 #### Adding Spaces
 Argument values with spaces should be enclosed with double quotes.
 
-Example: `Add-Expense -n "Birthday items" -a 90.40`
+Example:
+```
+Add-Expense -n "Birthday items" -a 90.40
+
+Name            : Birthday items
+Date and Time   : 01 Jan 2022 23:59
+Amount          : 90.40
+Currency        : SGD
+```
 
 <br>
 <hr>
@@ -103,7 +109,15 @@ Example: `Add-Expense -n "Birthday items" -a 90.40`
 
 Argument values with a double quote can be escaped by prepending an additional double quote.
 
-Example: `Add-Expense -n """Stuff" -a 65.77` 
+Example:
+```
+Add-Expense -n """Stuff""" -a 65.77
+
+Name            : Stuff
+Date and Time   : 1 Jan 2022 23:59
+Amount          : 65.77
+Currency        : SGD
+``` 
 
 <br>
 <hr>
@@ -113,7 +127,10 @@ Example: `Add-Expense -n """Stuff" -a 65.77`
 
 Argument values cannot start with a hyphen.
 
-Example: `Add-Expense -n "-Phone Bill" -a -500.00`
+Example: 
+```
+Add-Expense -n "-Phone Bill" -a -500.00
+```
 
 <br>
 <br>
@@ -127,6 +144,8 @@ Syntax: `help`
 
 Example of usage:
 * `help`
+
+_If you would like a more user-friendly view of all available commands, please refer to the [Command Summary](#command-summary) at the end of the guide._
 
 Expected output: 
 ```
@@ -168,7 +187,7 @@ Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DE
 * [Viewing expense(s)](#viewing-expenses-view-expense): `View-Expense`
 * [Deleting an expense](#deleting-an-expense-delete-expense): `Delete-Expense`
 * [Editing an expense](#editing-an-expense-edit-expense): `Edit-Expense`
-* [Sorting expenses](#sorting-expenses-sort-expense)" `Sort-Expense`
+* [Sorting expenses](#sorting-expenses-sort-expense): `Sort-Expense`
 * [Converting the currency of an expense](#converting-the-currency-of-an-expense-convert-currency): `Convert-Currency`
 * [Back to Contents](#contents)
 
@@ -178,8 +197,6 @@ Edit a target: Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DE
 
 
 ### Adding an expense: `Add-Expense`
-
-<br>
 
 Adds a new expense to the list of expenses.
 
@@ -200,7 +217,7 @@ Examples of usage:
 Add-Expense -n Subscription -a 13.37
 
 Name            : Subscription
-Date and Time   : 02 Nov 2022 14:21
+Date and Time   : 01 Jan 2022 23:59
 Amount          : 13.37
 Currency        : SGD
 
@@ -218,6 +235,7 @@ Category        : Work expenses
 Remarks         : Remarks here
 Currency        : USD
 Mode of Payment : PayLah
+
 
 The expense was added successfully.
 ```
@@ -328,6 +346,8 @@ Category        : Work expenses
 Remarks         : Remarks here
 Currency        : USD
 Mode of Payment : PayLah
+
+The expense was edited sucessfully.
 ```
 ```
 Edit-Expense -e 1 -n "VPN subscription" -a 88.88 -d "08/08/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD -p PayLah
@@ -423,16 +443,36 @@ Category        : Work expenses
 Remarks         : Remarks here
 Currency        : MYR
 Mode of Payment : PayLah
-The expense's currency was changed successfully.
 
+
+The expense's currency was changed successfully.
 ```
+
+<br>
+
+[Back to Sub-Contents](#managing-your-expenses)
 
 <br>
 <br>
 
 ## Managing your recurring payments
-### Adding recurring payments: `Add-RecurringPayment`
-Adds a recurring payment to the list of recurring payments
+
+## Sub-Contents
+* [Adding a recurring payment](#adding-a-recurring-payment-add-recurringpayment): `Add-RecurringPayment`
+* [Viewing recurring payment(s)](#viewing-recurring-payments-view-recurringpayment): `View-RecurringPayment`
+* [Deleting a recurring payment](#deleting-a-recurring-payment-delete-recurringpayment): `Delete-RecurringPayment`
+* [Editing a recurring payment](#editing-a-recurring-payment-edit-recurringpayment): `Edit-RecurringPayment`
+* [Paying a recurring payment](#paying-a-recurring-payment-pay-recurringpayment): `Pay-RecurringPayment`
+* [Back to Contents](#contents)
+
+<br>
+<hr>
+<br>
+
+### Adding a recurring payment: `Add-RecurringPayment`
+Adds a recurring payment to the list of recurring payments.
+
+<br>
 
 Syntax: `Add-RecurringPayment -n NAME -i INTERVAL -a AMOUNT [-t DESCRIPTION] [-c CATEGORY] [-x CURRENCY] [-p MODE_OF_PAYMENT]`
 
@@ -442,41 +482,106 @@ Syntax: `Add-RecurringPayment -n NAME -i INTERVAL -a AMOUNT [-t DESCRIPTION] [-c
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 > * `MODE_OF_PAYMENT` is a text string.
 
+<br>
+
 Examples of usage:
-* `Add-RecurringPayment -n "Mobile Plan" -i 30 -a 20.00`
-* `Add-RecurringPayment -n "Mobile Plan" -i 30 -a 20.00 -t "Monthly payment for my mobile plan" -c Telecom -x SGD -p Card`
+```
+Add-RecurringPayment -n "Mobile Plan" -i 30 -a 20.00
 
+Name            : Mobile Plan
+Interval (Days) : 30
+Amount          : 20.00
+Currency        : SGD
+
+
+The recurring payment was added successfully.
+```
+```
+Add-RecurringPayment -n "Mobile Plan" -i 30 -a 20.00 -t "Monthly payment for my mobile plan" -c Telecom -x SGD -p Card
+
+Name            : Mobile Plan
+Interval (Days) : 30
+Description     : Monthly payment for my mobile plan
+Amount          : 20.00
+Category        : Telecom
+Currency        : SGD
+Mode of Payment : Card
+
+
+The recurring payment was added successfully.
+```
+
+<br>
 <hr>
+<br>
 
-### Viewing recurring payments: `View-RecurringPayment`
+### Viewing recurring payment(s): `View-RecurringPayment`
 Displays the past recurring payments you have added.
+
+<br>
 
 Syntax: `View-RecurringPayment [-r RECURRING_PAYMENT_INDEX]`
 
 > ⚠️️️️ Syntax Notes
 > * `RECURRING_PAYMENT_INDEX` is an integer value. If this argument is provided, MoneyGoWhere will only display the specified recurring payment.
 
+<br>
+
 Examples of usage:
-* `View-RecurringPayment`
-* `View-RecurringPayment -r 1`
+```
+View-RecurringPayment
 
+---- RECURRING PAYMENT INDEX 0 ----
+Name            : Mobile Plan
+Interval (Days) : 30
+Amount          : 20.00
+Currency        : SGD
+```
+
+```
+View-RecurringPayment -r 1
+
+---- RECURRING PAYMENT INDEX 1 ----
+Name            : Mobile Plan
+Interval (Days) : 30
+Description     : Monthly payment for my mobile plan
+Amount          : 20.00
+Category        : Telecom
+Currency        : SGD
+Mode of Payment : Card
+````
+
+<br>
 <hr>
+<br>
 
-### Deleting recurring payments: `Delete-RecurringPayment`
+### Deleting a recurring payment: `Delete-RecurringPayment`
 Deletes a recurring payment from the list of recurring payments.
+
+<br>
 
 Syntax: `Delete-RecurringPayment -r RECURRING_PAYMENT_INDEX`
 
 > ⚠️️️️ Syntax Notes
 > * `RECURRING_PAYMENT_INDEX` is an integer value.
 
+<br>
+
 Example of usage:
-* `Delete-RecurringPayment -r 1`
+```
+Delete-RecurringPayment -r 1
 
+The recurring payment was deleted successfully.
+```
+
+<br>
 <hr>
+<br>
 
-### Editing recurring payments: `Edit-RecurringPayment`
-Edits a recurring payment in the list of recurring payments
+### Editing a recurring payment: `Edit-RecurringPayment`
+Edits a recurring payment in the list of recurring payments.
+
+<br>
 
 Syntax: `Edit-RecurringPayment -r RECURRING_PAYMENT_INDEX [-n NAME] [-i INTERVAL] [-a AMOUNT] [-t DESCRIPTION]`
 
@@ -486,14 +591,28 @@ Syntax: `Edit-RecurringPayment -r RECURRING_PAYMENT_INDEX [-n NAME] [-i INTERVAL
 > * `INTERVAL` is an integer value. Set this value to the estimated number of days between your recurring payments.
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 
+<br>
+
 Examples of usage:
-* `Edit-RecurringPayment -r 1 -a 20.00`
-* `Edit-RecurringPayment -r 1 -n "Mobile Plan" -i 30 -a 20.00 -t "Monthly payment for my mobile plan" -c Telecom -x SGD -p Card`
+```
+Edit-RecurringPayment -r 1 -a 20.00
 
+The recurring payment was edited successfully.
+```
+```
+Edit-RecurringPayment -r 1 -n "Mobile Plan" -i 30 -a 20.00 -t "Monthly payment for my mobile plan" -c Telecom -x SGD -p Card
+
+The recurring payment was edited successfully.
+```
+
+<br>
 <hr>
+<br>
 
-### Paying recurring payments: `Pay-RecurringPayment`
+### Paying a recurring payment: `Pay-RecurringPayment`
 Pays a recurring payment from the list of recurring payments.
+
+<br>
 
 Syntax: `Pay-RecurringPayment -r RECURRING_PAYMENT_INDEX [-d DATE_TIME]`
 
@@ -501,12 +620,47 @@ Syntax: `Pay-RecurringPayment -r RECURRING_PAYMENT_INDEX [-d DATE_TIME]`
 > * `RECURRING_PAYMENT_INDEX` is an integer value.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`. If this value is not provided, MoneyGoWhere will save the current date and time for you.
 
+<br>
+
 Example of usage:
-* `Pay-RecurringPayment -r 1`
+```
+Pay-RecurringPayment -r 1
+
+Name            : Mobile Plan
+Date and Time   : 01 Jan 2022 23:59
+Description     : Monthly payment for my mobile plan
+Amount          : 20.00
+Category        : Telecom
+Currency        : SGD
+Mode of Payment : Card
+
+The recurring payment was added as an expense successfully.
+```
+
+<br>
+
+[Back to Sub-Contents](#managing-your-recurring-payments)
+
+<br>
+<br>
 
 ## Managing your incomes
+
+## Sub-Contents
+* [Adding an income](#adding-an-income-add-income): `Add-Income`
+* [Viewing recurring payments](#viewing-incomes-view-income): `View-Income`
+* [Deleting recurring payments](#deleting-an-income-delete-income): `Delete-Income`
+* [Editing recurring payments](#editing-an-income-edit-income): `Edit-Income`
+* [Back to Contents](#contents)
+
+<br>
+<hr>
+<br>
+
 ### Adding an income: `Add-Income`
 Adds a new income to the list of incomes.
+
+<br>
 
 Syntax: `Add-Income -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION]`
 
@@ -515,6 +669,7 @@ Syntax: `Add-Income -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION]`
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
+<br>
 
 Examples of usage:
 ```
@@ -537,10 +692,14 @@ Amount        : 500.00
 The income was added successfully.
 ```
 
+<br>
 <hr>
+<br>
 
 ### Viewing income(s): `View-Income`
 Displays past incomes you have added.
+
+<br>
 
 Syntax: `View-Income [-e INCOME_NUMBER]`
 
@@ -548,27 +707,63 @@ Syntax: `View-Income [-e INCOME_NUMBER]`
 > * `INCOME_NUMBER` is an integer value.
 > * If this argument is provided, MoneyGoWhere will only display the specified expense.
 
-Examples of usage:
-* `View-Income`
-* `View-Income -e 1`
+<br>
 
+Examples of usage:
+```
+View-Income
+
+---- INCOME INDEX 0 ----
+Name          : Salary
+Date and Time : 03 Nov 2022 13:49
+Amount        : 3000.00
+---- INCOME INDEX 1 ----
+Name          : Stocks
+Date and Time : 01 Feb 2022 23:59
+Description   : Investment payouts
+Amount        : 500.00
+```
+```
+View-Income -e 1
+
+---- INCOME INDEX 1 ----
+Name          : Stocks
+Date and Time : 01 Feb 2022 23:59
+Description   : Investment payouts
+Amount        : 500.00
+```
+
+<br>
 <hr>
+<br>
 
 ### Deleting an income: `Delete-Income`
 Deletes an income from the list of incomes.
+
+<br>
 
 Syntax: `Delete-Income -e INCOME_NUMBER`
 
 > ⚠️️️️ Syntax Notes
 > * `INCOME_NUMBER` is an integer value.
 
-Example of usage:
-* `Delete-Income -e 1`
+<br>
 
+Example of usage:
+```
+Delete-Income -e 1
+
+The income was deleted successfully.
+```
+
+<br>
 <hr>
+<br>
 
 ### Editing an income: `Edit-Income`
 Edits an existing income in the list of incomes.
+
+<br>
 
 Syntax: `Edit-Income -e INCOME_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t DESCRIPTION]`
 
@@ -578,18 +773,56 @@ Syntax: `Edit-Income -e INCOME_NUMBER [-n NAME] [-a AMOUNT] [-d DATE_TIME] [-t D
 > * `AMOUNT` is a decimal value. The value should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
+<br>
+
 Examples of usage:
-```Edit-Income -e 1 -n Payout -a 100.00
-
-
 ```
-* `Edit-Income -e 1 -n "Monthly Salary" -a 3000 -d "01/01/2022 2359" -t "Monthly payment"`
+Edit-Income -e 1 -n Payout -a 100.00
 
-<hr>
+---- INCOME INDEX 1 ----
+Name          : Payout
+Date and Time : 01 Feb 2022 23:59
+Description   : Investment payouts
+Amount        : 100.00
+
+The income was edited successfully.
+```
+```
+Edit-Income -e 1 -n "Monthly Salary" -a 3000 -d "01/01/2022 2359" -t "Monthly payment"
+
+---- INCOME INDEX 1 ----
+Name          : Monthly Salary
+Date and Time : 01 Jan 2022 23:59
+Description   : Monthly payment
+Amount        : 3000
+
+The income was edited successfully.
+```
+
+<br>
+
+[Back to Sub-Contents](#managing-your-incomes)
+
+<br>
+<br>
 
 ## Managing your targets
+
+## Sub-Contents
+* [Adding a target](#adding-a-target-add-target): `Add-Target`
+* [Viewing target(s)](#viewing-targets-view-target): `View-Target`
+* [Deleting a target](#deleting-a-target-delete-target): `Delete-Target`
+* [Editing a target](#editing-a-target-edit-target): `Edit-Target`
+* [Back to Contents](#contents)
+
+<br>
+<hr>
+<br>
+
 ### Adding a target: `Add-Target`
 Adds a new target to the list of targets.
+
+<br>
 
 Syntax: `Add-Target -n NAME -a AMOUNT -c CURRENT_AMOUNT [-d DATE_TIME] [-t DESCRIPTION]`
 
@@ -598,15 +831,40 @@ Syntax: `Add-Target -n NAME -a AMOUNT -c CURRENT_AMOUNT [-d DATE_TIME] [-t DESCR
 > * `AMOUNT` and `CURRENT_AMOUNT` are decimal value. The values should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
+<br>
 
 Examples of usage:
-* `Add-Target -n "Food target" -a 1000.00 -c 1500.00 -d "01/02/2022 2359" -t "Money spent on food"`
-* `Add-Target -n "Salary" -a 3000.00 -c 1500.00`
 
+```
+Add-Target -n "Salary" -a 3000.00 -c 1500.00
+
+Name          : Salary
+Date and Time : 01 Jan 2022 23:59
+Amount        : 3000.00
+Current Amount: 1500.00
+
+The target was added successfully.
+```
+```
+Add-Target -n "Food target" -a 1000.00 -c 1500.00 -d "01/02/2022 2359" -t "Money spent on food"
+
+Name          : Food target
+Date and Time : 01 Feb 2022 23:59
+Description   : Money spent on food
+Amount        : 1000.00
+Current Amount: 1500.00
+
+The target was added successfully.
+```
+
+<br>
 <hr>
+<br>
 
 ### Viewing target(s): `View-Target`
 Displays past targets you have added.
+
+<br>
 
 Syntax: `View-Target [-e TARGET_NUMBER]`
 
@@ -614,27 +872,66 @@ Syntax: `View-Target [-e TARGET_NUMBER]`
 > * `TARGET_NUMBER` is an integer value.
 > * If this argument is provided, MoneyGoWhere will only display the specified expense.
 
-Examples of usage:
-* `View-Target`
-* `View-Target -e 1`
+<br>
 
+Examples of usage:
+```
+View-Target
+
+---- TARGET INDEX 0 ----
+Name          : Salary
+Date and Time : 03 Nov 2022 13:58
+Amount        : 3000.00
+Current Amount: 1500.00
+---- TARGET INDEX 1 ----
+Name          : Food target
+Date and Time : 01 Feb 2022 23:59
+Description   : Money spent on food
+Amount        : 1000.00
+Current Amount: 1500.00
+```
+```
+View-Target -e 1
+
+---- TARGET INDEX 1 ----
+Name          : Food target
+Date and Time : 01 Feb 2022 23:59
+Description   : Money spent on food
+Amount        : 1000.00
+Current Amount: 1500.00
+```
+
+<br>
 <hr>
+<br>
 
 ### Deleting a target: `Delete-Target`
 Deletes a target from the list of targets.
+
+<br>
 
 Syntax: `Delete-Target -e TARGET_NUMBER`
 
 > ⚠️️️️ Syntax Notes
 > * `TARGET_NUMBER` is an integer value.
 
-Example of usage:
-* `Delete-Target -e 1`
+<br>
 
+Example of usage:
+```
+Delete-Target -e 1
+
+The target was deleted successfully.
+```
+
+<br>
 <hr>
+<br>
 
 ### Editing a target: `Edit-Target`
 Edits an existing target in the list of targets.
+
+<br>
 
 Syntax: `Edit-Target -e TARGET_NUMBER [-n NAME] [-a AMOUNT] [-c CURRENT_AMOUNT] [-d DATE_TIME] [-t DESCRIPTION]`
 
@@ -644,82 +941,84 @@ Syntax: `Edit-Target -e TARGET_NUMBER [-n NAME] [-a AMOUNT] [-c CURRENT_AMOUNT] 
 > * `AMOUNT` and `CURRENT_AMOUNT` is a decimal value. The values should be greater than 0.
 > * `DATE_TIME` is a text string in the format `"dd/MM/yyyy HHmm"`.
 
-Examples of usage:
-* `Edit-Target -e 1 -n "October Target" -a 100.00`
-* `Edit-Target -e 1 -n "Monthly Target" -a 3000 -c 1200 -d "01/01/2022 2359" -t "Monthly payment"`
+<br>
 
+Examples of usage:
+```
+Edit-Target -e 1 -n "October Target" -a 100.00
+
+---- TARGET INDEX 1 ----
+Name          : October Target
+Date and Time : 01 Feb 2022 23:59
+Description   : Money spent on food
+Amount        : 1000.00
+Current Amount: 1500.00
+
+The target was edited successfully.
+```
+```
+Edit-Target -e 1 -n "Monthly Target" -a 3000 -c 1200 -d "01/01/2022 2359" -t "Monthly payment"
+
+---- TARGET INDEX 1 ----
+Name          : Monthly Target
+Date and Time : 01 Jan 2022 23:59
+Description   : Monthly payment
+Amount        : 3000
+Current Amount: 1200
+
+The target was edited successfully.
+```
+
+<br>
 <hr>
+<br>
 
 ## Handling your data
+By default, all lists are saved in the `MoneyGoWhereData.xml` file in the **Memory** folder created in the same directory as `MoneyGoWhere.jar`.
+
+All data is saved automatically and will not be lost when exiting the MoneyGoWhere.
+
+
+<br>
+<hr>
+<br>
+
 ### Merging a data file: `Merge-File`
 Merges save file from an external source given path to the .xml save file
+
+<br>
 
 Syntax: `Merge-File -p PATH_STRING` 
 
 > ⚠️️️️ Syntax Notes
 > * `PATH_STRING` is text string. If your path contains spaces, you would need to wrap the text with double quotes.
 
+<br>
 
 Example of usage:
-* `Merge-File -p "C:\Users\the_d\Downloads\expenses.xml"`
 
+`Merge-File -p "C:\Users\the_d\Downloads\expenses.xml"`
+
+<br>
 <hr>
+<br>
 
 ### Exiting the application: `bye`
 Exits MoneyGoWhere.
 
+<br>
+
 Syntax: `bye`
 
+<br>
+
 Example of usage:
-* `bye`
 
-## Sample Outputs
-Input: `Add-Expense -n Subscription -a 13.37`
+`bye`
 
-Output:
-```
-Name            : Subscription 
-Date and Time   : 27 Oct 2022 16:40
-Amount          : 13.37
-Currency        : SGD
+<br>
+<br>
 
-
-The expense was added successfully.
-```
-
-<hr>
-
-Input: `View-RecurringPayment`
-
-Output:
-```
----- RECURRING PAYMENT INDEX 0 ----
-Name            : Mobile Plan
-Interval (Days) : 30
-Description     : Monthly payment for my mobile plan
-Amount          : 20.00
-Category        : Telecom
-Currency        : SGD
-Mode of Payment : Card
-```
-
-<hr>
-
-
-Input: `Pay-RecurringPayment -r 0`
-
-Output:
-```
-Name            : Mobile Plan
-Date and Time   : 27 Oct 2022 16:49
-Description     : Monthly payment for my mobile plan
-Amount          : 10.00
-Category        : Telecom
-Currency        : SGD
-Mode of Payment : Card
-
-The recurring payment was added as an expense successfully.
-```
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?
@@ -728,30 +1027,65 @@ The recurring payment was added as an expense successfully.
 As you enter data into MoneyGoWhere, it creates a **Memory** folder in the same directory as the *.jar* file.
 You may use any of your preferred tool to transfer the **Memory/MoneyGoWhereData.xml** data file to another computer and run the [`Merge-File`](#merging-a-data-file-merge-file) command to merge the copied file.
 
+<br>
+<br>
+
 ## Command Summary
 
 A list of all valid commands.
 
-* Add expense: `Add-Expense -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD`
-* View expense: `View-Expense`
-* Delete expense: `Delete-Expense -e 1`
-* Edit expense: `Edit-Expense -e 1 -n "Cloud subscription" -a 13.37 -d "01/01/2022 2359" -t "Monthly payment" -c "Work expenses" -r "Remarks here" -x USD`
-* Sort expense: `Sort-Expense -t alphabetical -o ascending"`
-* Convert currency: `Convert-Currency -e 1 -x USD`
-* Add recurring payment: `Add-RecurringPayment -n "Mobile Plan" -i 30 -a 20.00`
-* View recurring payment: `View-RecurringPayment`
-* Delete recurring payment: `Delete-RecurringPayment -r 1`
-* Edit recurring payment: `Edit-RecurringPayment -r 1 -n "Mobile Plan" -i 30 -a 20.00 -t "Monthly payment for my mobile plan" -c Telecom -x SGD -p Card`
-* Pay recurring payment: `Pay-RecurringPayment -r 1`
-* Add income: `Add-Income -n "Stocks" -a 500.00 -d "01/02/2022 2359" -t "Investment payouts"`
-* View income: `View-Income -e 1`
-* Delete income: `Delete-Income -e 1`
-* Edit income: `Edit-Income -e 1 -n "Monthly Salary" -a 3000 -d "01/01/2022 2359" -t "Monthly payment"`
-* Add target: `Add-Target -n "Food target" -a 1000.00 -c 1500.00 -d "01/02/2022 2359" -t "Money spent on food"`
-* View target: `View-Target -e 1`
-* Delete target: `Delete-Target -e 1`
-* Edit target: `Edit-Target -e 1 -n "October Target" -a 100.00`
-* Merge file: `Merge-File -p "C:\Users\the_d\Downloads\expenses.xml"`
-* Help: `help`
-* Exit: `bye`
+<br>
+
+### Expenses
+| Command          | Syntax                                                                                                                                                    |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Add expense      | `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`                             |
+| View expenses    | `View-Expense [-e EXPENSE-INDEX] [-c EXPENSE-CATEGORY] [-n EXPENSE-NAME]`                                                                                 |
+| Delete expense   | `Delete-Expense -e EXPENSE-INDEX`                                                                                                                         |
+| Edit expense     | `Edit-Expense -e EXPENSE-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] [-a AMOUNT] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]` |
+| Sort expense     | `Sort-Expense -t Alphabetical/Amount/Date/Currency -o Ascending/Descending`                                                                               |
+| Convert currency | `Convert-Currency -e EXPENSE-INDEX -x CURRENCY [-r RATE]`                                                                                                 |
+
+<br>
+
+### Recurring Payments
+| Command                  | Syntax                                                                                                                             |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Add recurring payment    | `Add-RecurringPayment -n NAME -i INTERVAL -a AMOUNT [-t DESCRIPTION] [-c CATEGORY] [-x CURRENCY]`                                  |
+| View recurring payments  | `View-RecurringPayment [-r RECURRINGPAYMENT-INDEX]`                                                                                |
+| Delete recurring payment | `Delete-RecurringPayment -r RECURRINGPAYMENT-INDEX`                                                                                |
+| Edit recurring payment   | `Edit-RecurringPayment -r RECURRINGPAYMENT-INDEX [-n NAME] [-i INTERVAL] [-a AMOUNT] [-t DESCRIPTION] [-c CATEGORY] [-x CURRENCY]` |
+| Pay recurring payment    | `Pay-RecurringPayment -r RECURRINGPAYMENT-INDEX`                                                                                   |
+
+<br>
+
+### Incomes
+| Command        | Syntax                                                                                    |
+|----------------|-------------------------------------------------------------------------------------------|
+| Add income     | `Add-Income -n NAME -a AMOUNT [-d dd/MM/yyyy HHmm] [-t DESCRIPTION]`                      |
+| View incomes   | `View-Income [-e INCOME-INDEX]`                                                           |
+| Delete incomes | `Delete-Income -e INCOME-INDEX`                                                           |
+| Edit income    | `Edit-Income -e INCOME-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] [-a AMOUNT]` |
+
+<br>
+
+### Targets
+| Command       | Syntax                                                                                                        |
+|---------------|---------------------------------------------------------------------------------------------------------------|
+| Add target    | `Add-Target -n NAME -a AMOUNT -c CURRENT-AMOUNT [-d dd/MM/yyyy HHmm] [-t DESCRIPTION]`                        |
+| View targets  | `View-Target [-e TARGET-INDEX]`                                                                               |
+| Delete target | `Delete-Target -e TARGET-INDEX`                                                                               |
+| Edit target   | `Edit-Target -e TARGET-INDEX [-n NAME] [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] [-a AMOUNT] [-c CURRENT-AMOUNT]` |
+
+<br>
+
+### Miscellaneous
+| Command      | Syntax                      |
+|--------------|-----------------------------|
+| Merge file   | `Merge-File -p PATH_STRING` |
+| Command list | `help`                      |
+| Exit         | `bye`                       |
+
+<br>
+<br>
 
