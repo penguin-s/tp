@@ -6,19 +6,22 @@
 
 ## Contents
 * [Introduction](#introduction)
-* [Quick Start](#quick-start)
-* [Understanding the Command Syntax](#understanding-the-command-syntax)
+* [How to use the User Guide](#how-to-use-the-user-guide)
+  * [Understanding symbols used in the user guide](#understanding-symbols-used-in-the-user-guide)
+  * [Understanding the command syntax](#understanding-the-command-syntax)
+* [Quick start](#quick-start)
+  * [Installation requirements](#installation-requirements)
+  * [Basic commands](#basic-commands)
 * [Features](#features)
-   * [Managing Your Expenses](#managing-your-expenses)
-   * [Managing Your Recurring Payments](#managing-your-recurring-payments)
-   * [Managing Your Incomes](#managing-your-incomes)
-   * [Managing Your Targets](#managing-your-targets)
-   * [Handling Your Data](#handling-your-data)
+   * [Managing your expenses](#managing-your-expenses)
+   * [Managing your recurring payments](#managing-your-recurring-payments)
+   * [Managing your incomes](#managing-your-incomes)
+   * [Managing your targets](#managing-your-targets)
+   * [Handling your data](#handling-your-data)
    * [Listing all available commands: `help`](#listing-all-available-commands-help)
    * [Exiting the application: `bye`](#exiting-the-application-bye)
-* [Sample Outputs](#sample-outputs)
 * [FAQ](#faq)
-* [Command Summary](#command-summary)
+* [Command summary](#command-summary)
 
 <br>
 <br>
@@ -34,33 +37,47 @@ Although this application is mainly targeted at computing professionals who are 
 <br>
 <br>
 
-## Quick Start
+## How to use the User Guide
+When using the user guide, you should first refer to the [Table of Contents](#contents) to quickly navigate between sections.
 
-1. Ensure that ```Java 11``` is installed on your system.
-    1. Execute the command ```java --version``` in your terminal window.
-    2. Verify that the version of Java installed is ```Java 11```.
-2. Ensure that you have write permissions for the directory in which you are executing the program.
+Otherwise, the [Quick Start](#quick-start) can help you get into MoneyGoWhere in a snap.
 
 <br>
+<hr>
 <br>
 
-## Understanding the Command Syntax
+#### Sub-Contents
 
-
-### Sub-Contents
-
-* [Basic Syntax](#basic-syntax)
-* [Additional Syntax](#additional-syntax)
-  * [Adding Spaces](#adding-spaces)
-  * [Adding Double Quotes](#adding-double-quotes)
-  * [Restriction on Adding Hyphens](#restriction-on-adding-hyphens)
+* [Understanding symbols used in the User Guide](#understanding-symbols-used-in-the-user-guide)
+* [Understanding the Command Syntax](#understanding-the-command-syntax)
+  * [Basic Syntax](#basic-syntax)
+  * [Additional Syntax](#additional-syntax)
+    * [Adding spaces](#adding-spaces)
+    * [Adding double quotes](#adding-double-quotes)
+    * [Restriction on adding hyphens](#restriction-on-adding-hyphens)
 * [Back to Contents](#contents)
 
 <br>
 <hr>
 <br>
 
-### Basic Syntax
+### Understanding symbols used in the User Guide
+
+> ❌ Cross symbols indicate **invalid** input into MoneyGoWhere.
+
+>✔️ Tick symbols indicate **valid** input into MoneyGoWhere.
+
+>ℹ️ Information symbols indicate **tips** or **notes** that contain extra information to clarify functions for you.
+
+>⚠️ Warning symbols indicate **pre-cautions** that you should take when using the function.
+
+<br>
+<hr>
+<br>
+
+### Understanding the Command Syntax
+
+#### Basic Syntax
 
 When inputting arguments:
 * The absence of square brackets denotes **mandatory** arguments.
@@ -70,9 +87,9 @@ When inputting arguments:
 
 Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT]`
 
-> ❌ Invalid Command Syntax  
+> ❌ Invalid Command Syntax
 >
->* `Add-Expense -n Subscription`    
+>* `Add-Expense -n Subscription`
 >* `Add-Expense -a 13.37`
 
 >✔️ Valid Command Syntax
@@ -84,11 +101,11 @@ Example: `Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATE
 <hr>
 <br>
 
-### Additional Syntax
+#### Additional Syntax
 
 <br>
 
-#### Adding Spaces
+##### Adding spaces
 Argument values with spaces should be enclosed with double quotes.
 
 Example:
@@ -105,7 +122,7 @@ Currency        : SGD
 <hr>
 <br>
 
-#### Adding Double Quotes
+##### Adding double quotes
 
 Argument values with a double quote can be escaped by prepending an additional double quote.
 
@@ -123,14 +140,58 @@ Currency        : SGD
 <hr>
 <br>
 
-#### Restriction on Adding Hyphens
+##### Restriction on adding hyphens
 
 Argument values cannot start with a hyphen.
 
-Example: 
+Example:
 ```
 Add-Expense -n "-Phone Bill" -a -500.00
 ```
+<br>
+
+[Back to Sub-Contents](#understanding-the-command-syntax)
+
+<br>
+<br>
+
+## Quick Start
+
+### Sub-Contents
+
+* [Installation requirements](#installation-requirements)
+* [Basic commands](#basic-commands)
+
+<br>
+<hr>
+<br>
+
+### Installation requirements
+
+1. Ensure that ```Java 11``` is installed on your system.
+    1. Execute the command ```java --version``` in your terminal window.
+    2. Verify that the version of Java installed is ```Java 11```.
+2. Ensure that you have write permissions for the directory in which you are executing the program.
+
+<br>
+<hr>
+<br>
+
+### Basic commands
+
+| Command               | Syntax                                                                                                                          |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Add expense           | ` Add-Expense -n NAME -a AMOUNT [-d DATE_TIME] [-t DESCRIPTION] [-c CATEGORY] [-r REMARKS] [-x CURRENCY] [-p MODE OF PAYMENT] ` |
+| View expense(s)       | ` View-Expense [-e EXPENSE-INDEX] [-c EXPENSE-CATEGORY] [-n EXPENSE-NAME] `                                                     |
+| Add recurring payment | ` Add-RecurringPayment -n NAME -i INTERVAL -a AMOUNT [-t DESCRIPTION] [-c CATEGORY] [-x CURRENCY] `                             |
+| Add income            | ` Add-Income -n NAME -a AMOUNT [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] `                                                          |
+| Add target            | ` Add-Target -n NAME -a AMOUNT -c CURRENT-AMOUNT [-d dd/MM/yyyy HHmm] [-t DESCRIPTION] `                                        |
+| View command list     | `help`                                                                                                                          |
+| Exit                  | `bye`                                                                                                                           |
+
+<br>
+
+[Back to Sub-Contents](#quick-start)
 
 <br>
 <br>
